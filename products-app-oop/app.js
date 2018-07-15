@@ -77,7 +77,7 @@ document.getElementById('product-form').addEventListener('submit', function(even
 });
 
 //Events of list (Delete Form)
-document.getElementById('product-list').addEventListener('click', function (e) {
+document.getElementById('product-list').addEventListener('click', (e) => {
     //console.log(e.target);
     const ui = new UI();
     ui.deleteProducto(e.target);

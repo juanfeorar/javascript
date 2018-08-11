@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .miClase {
+            color:red;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", inicio);
+        
+        function inicio() {
+            document.getElementById("cambiarTextos").addEventListener("click", cambiarTextos);
+            document.getElementById("cambiarClases").addEventListener("click", cambiarClases);
+            document.getElementById("quitarClases").addEventListener("click", quitarClases);
+        }
+        function cambiarTextos(){
+            //Seleccionr un único elemento según su ID
+            //console.log(document.getElementById("parrafo1"));
+            document.getElementById("parrafo1").innerHTML = "Primer párrafo cambiado";
+            //SEleccionar todo los elementos segun su etiqueta en concreto
+            //console.log(document.getElementsByTagName("p")[1]);
+            document.getElementsByTagName("p")[1].innerHTML = "Segundo párrafo";
+            //Seleccionar todos los elementos según la clase
+            //console.log(document.getElementsByClassName("miClase"));
+            document.getElementsByClassName("miClase")[0].innerHTML = "Tercer párrafo";
+
+            //Seleccionar un elementro dentro de otro
+            var principal = document.getElementById("main");
+            //var parrafo1 = principal.getElementById("parrafo1");
+
+            //Seleccionar el PRIMER elemnto con un selecto CSS
+            /*document.querySelector("p.miclase");
+            document.querySelector("p.miClase");*/
+        }
+        function cambiarClases() {
+                //alert();
+                document.getElementById("parrafo1").setAttribute("class","miClase");
+                document.getElementById("parrafo2").className = "miClase";
+        }
+
+        function quitarClases() {
+            //Quitar una clase de un solo parrafo
+            document.getElementById("parrafo1").setAttribute("class","");
+            document.getElementById("parrafo2").className = "";
+            
+            //Quitar todas las clases (por ejemplo 200 parrafos)
+            for(let i=0; i<document.getElementsByTagName("p").length; i++) {
+                document.getElementsByTagName("p")[i].className = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+        <p id="parrafo1">Este es el primero párrafooo</p>
+        <p id="parrafo2">Este es el segundo parrafo</p>
+        <p id="parrafo3" class="miClase">Este es el parrafo 3</p>
+    </div>
+    <br />
+    <button id="cambiarTextos">Cambia texto de parrafos</button>
+    <button id="cambiarClases">Cambia clase de párrafos</button>
+    <button id="quitarClases">Quitar clases de todos los párrafos</button>
+</body>
+</html>

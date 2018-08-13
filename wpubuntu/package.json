@@ -1,0 +1,18 @@
+{
+  "name": "wpubuntu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack index.js --output bundle.js --mode development",
+    "build:local":"webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  }
+}

@@ -1,8 +1,8 @@
-'use strict';
+'use stict';
 
 function Route(name, htmlName, defaultRoute) {
     try {
-        if (!name || !htmlName) {
+        if(!name || !htmlName) {
             throw 'error: name and htmlName params are mandatories';
         }
         this.constructor(name, htmlName, defaultRoute);
@@ -21,6 +21,6 @@ Route.prototype = {
         this.default = defaultRoute;
     },
     isActiveRoute: function (hashedPath) {
-        return hashedPath.replace('#', '') === this.name;
+        return hashedPath.replace('#', '') === this.name; 
     }
 }

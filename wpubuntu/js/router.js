@@ -8,7 +8,7 @@ function Router(routes) {
         this.constructor(routes);
         this.init();
     } catch (e) {
-        console.error(e);
+        console.error(e);   
     }
 }
 
@@ -21,32 +21,32 @@ Router.prototype = {
     },
     init: function () {
         var r = this.routes;
-        (function (scope, r) {
+        (function(scope, r) { 
             window.addEventListener('hashchange', function (e) {
                 scope.hasChanged(scope, r);
             });
         })(this, r);
         this.hasChanged(this, r);
     },
-    hasChanged: function (scope, r) {
+    hasChanged: function(scope, r){
         if (window.location.hash.length > 0) {
             for (var i = 0, length = r.length; i < length; i++) {
                 var route = r[i];
-                if (route.isActiveRoute(window.location.hash.substr(1))) {
+                if(route.isActiveRoute(window.location.hash.substr(1))) {
                     scope.goToRoute(route.htmlName);
                 }
             }
         } else {
             for (var i = 0, length = r.length; i < length; i++) {
                 var route = r[i];
-                if (route.default) {
+                if(route.default) {
                     scope.goToRoute(route.htmlName);
                 }
             }
         }
     },
     goToRoute: function (htmlName) {
-        (function (scope) {
+        (function(scope) { 
             var url = 'views/' + htmlName,
                 xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {

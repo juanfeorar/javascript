@@ -12,20 +12,41 @@
                     elemento = document.getElementById(id);
                     return this;
                 },
+
                 noSubmit: function () {
                     elemento.addEventListener('submit', function (e) {
                         e.preventDefault();
                     }, false);
                     return this;
                 },
+
                 enrutar: function () {
                     marco = elemento;
+                    return this;
                 },
+
                 ruta: function (ruta, plantilla, controlador, carga) {
                     rutas[ruta] = {
                         'plantilla': plantilla,
                         'controlador': controlador,
                         'carga': carga
+                    };
+                    return this;
+                },
+                manejadorRutas: function () {
+                    var hash = window.location.hash.substr(1) || '/',
+                        destino = rutas[hash],
+                        xhr = new XMLHttpRequest();
+
+                    if (destino && destino.plantilla) {
+                        xhr.addEventListener('load', () => {
+                            marco.innetHTML = this.responseText;
+                        }, false);
+                        
+                        xhr.open('get', destino.plantilla, true);
+                        xhr.send(null);
+                    } else {
+                        window.location.hash = '#/';
                     }
                 }
             };
@@ -33,6 +54,8 @@
     }
     if (typeof window.libreria === 'undefined') {
         window.libreria = window._ = inicio();
+        window.addEventListener('load', libreria.manejadorRutas, false);
+        window.addEventListener('haschange', libreria.manejadorRutas, false);
     } else {
         console.log(("Se está llamando la librería nuevamente"));
 

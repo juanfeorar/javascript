@@ -11,3 +11,38 @@
     color: #333;
 }
 /* Fin Menú */
+
+/* Formulario */
+fieldset{
+    border: none;
+    padding: 1.5em;
+}
+legend{
+    font-size: 2em;
+}
+input{
+    border: none;
+    border-bottom: 1px solid gray;
+    display: block;
+    font-size: 24px;
+    margin-bottom: 1em;
+    min-width: 50%;
+    outline: none;
+}
+
+input:focus{
+    border-bottom: 2px solid teal;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button,
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"], input[type="date"]{
+    text-align: right;
+}
+/* Fin Formularios */

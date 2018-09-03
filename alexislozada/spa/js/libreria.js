@@ -2,11 +2,10 @@
     'use strinck';
     var inicio = function () {
         var elemento = null,
-            marco = null;
-        rutas = {},
+            marco = null,
+            rutas = {},
             controladores = {},
             controlador,
-
             libreria = {
                 getID: function (id) {
                     elemento = document.getElementById(id);
@@ -37,12 +36,12 @@
                     var hash = window.location.hash.substr(1) || '/',
                         destino = rutas[hash],
                         xhr = new XMLHttpRequest();
-
                     if (destino && destino.plantilla) {
                         xhr.addEventListener('load', () => {
                             marco.innetHTML = this.responseText;
+                            alert(this.responseText);
                         }, false);
-                        
+
                         xhr.open('get', destino.plantilla, true);
                         xhr.send(null);
                     } else {
@@ -52,10 +51,13 @@
             };
         return libreria;
     }
+    
+    
     if (typeof window.libreria === 'undefined') {
+        console.log(window.location.hash);
         window.libreria = window._ = inicio();
         window.addEventListener('load', libreria.manejadorRutas, false);
-        window.addEventListener('haschange', libreria.manejadorRutas, false);
+        window.addEventListener('hashchange', libreria.manejadorRutas, false);
     } else {
         console.log(("Se está llamando la librería nuevamente"));
 

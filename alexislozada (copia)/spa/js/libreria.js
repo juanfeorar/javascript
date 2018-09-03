@@ -2,10 +2,11 @@
     'use strinck';
     var inicio = function () {
         var elemento = null,
-            marco = null,
-            rutas = {},
+            marco = null;
+        rutas = {},
             controladores = {},
-            ctrlActual = null,
+            controlador,
+
             libreria = {
                 getID: function (id) {
                     elemento = document.getElementById(id);
@@ -17,10 +18,6 @@
                         e.preventDefault();
                     }, false);
                     return this;
-                },
-
-                controlador: function (nombre, ctrl) {
-                    controladores[nombre] = {'controlador': ctrl};
                 },
 
                 enrutar: function () {
@@ -37,28 +34,15 @@
                     return this;
                 },
                 manejadorRutas: function () {
-                    var hash = window.location.hash.substring(1) || '/',
+                    var hash = window.location.hash.substr(1) || '/',
                         destino = rutas[hash],
                         xhr = new XMLHttpRequest();
-                    if (destino && destino.plantilla) {
-                        if(destino.controlador){
-                            ctrlActual = destino.controlador;
-                        }
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState === 4) {
-                                if (xhr.status === 200) {
-                                    marco.innetHTML = this.responseText;
-                                    document.getElementById("vista").innerHTML = this.responseText;
-                                    //alert(this.responseText);
-                                }
-                          }
-                        };
-                        
-                        /*('load', () => {
-                            marco.innetHTML = this.responseText;
-                            alert(this.responseText);
-                        }, false);*/
 
+                    if (destino && destino.plantilla) {
+                        xhr.addEventListener('load', () => {
+                            marco.innetHTML = this.responseText;
+                        }, false);
+                        
                         xhr.open('get', destino.plantilla, true);
                         xhr.send(null);
                     } else {
@@ -68,12 +52,10 @@
             };
         return libreria;
     }
-    
-    
     if (typeof window.libreria === 'undefined') {
         window.libreria = window._ = inicio();
         window.addEventListener('load', libreria.manejadorRutas, false);
-        window.addEventListener('hashchange', libreria.manejadorRutas, false);
+        window.addEventListener('haschange', libreria.manejadorRutas, false);
     } else {
         console.log(("Se está llamando la librería nuevamente"));
 

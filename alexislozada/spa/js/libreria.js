@@ -49,6 +49,9 @@
                                 if (xhr.status === 200) {
                                     marco.innetHTML = this.responseText;
                                     document.getElementById("vista").innerHTML = this.responseText;
+                                    if(typeof (destino.carga)=== 'function'){
+                                        destino.carga();
+                                    }
                                     //alert(this.responseText);
                                 }
                           }

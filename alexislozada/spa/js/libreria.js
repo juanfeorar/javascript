@@ -23,6 +23,14 @@
                     controladores[nombre] = {'controlador': ctrl};
                 },
 
+                controlador: function(nombre, ctrl){
+                    controladores[nombre] = {'controlador': ctrl}; 
+                },
+
+                getCtrl: function(){
+                    return ctrlActual;
+                },
+
                 enrutar: function () {
                     marco = elemento;
                     return this;

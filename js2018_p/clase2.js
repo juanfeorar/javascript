@@ -1,4 +1,4 @@
-var nombre = 'Juan', apellido = 'Ordóñez'
+var nombre = 'Carlos', apellido = 'Ordóñez'
 
 var nombreEnMayuscula = nombre.toUpperCase();
 
@@ -16,3 +16,4 @@ var str1 = nombre.substr(1, 2);
 //desafio
 var tamanoNombre = nombre.length;
 var ultimaLetraNombre = nombre.charAt(tamanoNombre-1);
+console.log(ultimaLetraNombre);

@@ -29,7 +29,7 @@ class Desarrollador extends Persona {
             fn(nombre, apellido, true);
         }
     }
-}
+ }
 
 function responderSaludo(nombre, apellido, esDev) {
     console.log(`Buen día ${nombre} ${apellido}`);

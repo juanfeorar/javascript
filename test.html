@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="moment.js"></script>
+</head>
+<table>
+    <tr id="calendar"></tr>
+
+</table>
+<div id="gridDays" style="display:flex">
+
+</div>
+<body>
+
+    <script>
+        var startOfWeek = moment().startOf('week');
+        var endOfWeek = moment().endOf('week');
+        console.log(endOfWeek.diff(startOfWeek, 'days'));
+
+
+        var days = [];
+        var day = startOfWeek;
+        var elementGridDay = document.getElementById("gridDays");
+
+
+        
+        var hours = [];
+        while (day <= endOfWeek) {
+
+            const elementDay = document.createElement('div');
+            elementDay.id = day;
+            elementDay.innerHTML = `${day}`;
+            let elementDayChild = elementGridDay.appendChild(elementDay);
+            
+            for (let i = 8; i < 18; i++) {
+                let elementHour = document.createElement('div');
+                elementHour.id = i;
+                let minute = 0;
+                console.log(moment({i, minute }).format('h:mm a'));
+                
+                elementHour.innerHTML = i+moment(i).hour(i).format("A");
+                elementDayChild.appendChild(elementHour);
+
+                hours.push(moment({i, minute }).format('h:mm a'));
+
+
+            }
+
+            day = day.clone().add(1, 'd');
+        }
+        //console.log(hours);
+        const localDatTime = moment().add(1, 'd').utc().zone(-120);
+        function getTime(hour, minute) {
+            return localDatTime.clone().startOf('day').hour(hour).minute(minute).format('HH:mm');
+        }
+        console.log(localDatTime+'hora');
+
+        var hoursPerDay = 8;
+        var starHour = 8;
+        var endHour = 17
+        var time = [];
+
+        function timeOneDay() {
+            var formattedTime;
+            for (starHour = 8; starHour < endHour; starHour++) { //fill in all of the hours
+                formattedTime = moment().add('hours', 1).format("hA");  //give the time in format X AM/PM
+                time.unshift(formattedTime);  //add to beginning of array
+            }                              //do this for all 24 hours
+            //https://stackoverflow.com/questions/50208190/create-an-array-of-the-last-24-hours-using-moment-js
+            //https://blog.theodo.fr/2018/01/tips-tricks-date-handling-moment-js/
+            //https://stackoverflow.com/questions/53708625/moment-js-interval-for-a-day-in-12-hours-format
+        }
+        timeOneDay();
+        console.log(moment().format("HH:mm"));
+        console.log(time);
+
+        var dateB = moment('2014-12-12');
+        var dateC = moment('2014-12-10');
+
+        console.log(dateB.from(dateC));
+        console.log(moment().calendar(referenceTime, formats));
+        
+    </script>
+
+</html>

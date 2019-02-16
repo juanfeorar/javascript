@@ -1,0 +1,28 @@
+{
+    "todos": [
+        {
+            "title": "Task 1",
+            "responsalbe": "Mark",
+            "description": "cualquier cosa",
+            "priority": "low"
+        },
+        {
+            "title": "Task 2",
+            "responsalbe": "Ryan",
+            "description": "cualquier cosa 2",
+            "priority": "medium"
+        },
+        {
+            "title": "Task 3",
+            "responsalbe": "Joseph",
+            "description": "cualquier cosa 3",
+            "priority": "high"
+        },
+        {
+            "title": "Task 4",
+            "responsalbe": "Juleita",
+            "description": "La hija hermosa",
+            "priority": "high"
+        }
+    ]
+}

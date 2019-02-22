@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Content.css';
-//import moment from 'moment';
 import moment from 'moment-with-locales-es6';
 
 
@@ -8,19 +7,23 @@ import moment from 'moment-with-locales-es6';
 class Content extends Component {
 
 
-    createCalendar = () => {
+    handleBooking() {
+        alert('');
+    }
+    
+    handleCalendar = () => {
         moment.locale('es');
-        let week = [];
-        var startOfWeek = moment().startOf('week');
-        var endOfWeek = moment().endOf('week');
+        const week = [];
+        const startOfWeek = moment().startOf('week');
+        const endOfWeek = moment().endOf('week');
 
-        var day = startOfWeek;
+        let day = moment();
         while (day <= endOfWeek) {
-            let weekDay = [];
+            const weekDay = [];
             for (let i = 8; i < 18; i++) {
                 weekDay.push(
-                    <div className="card w-70">
-                    {i+moment(i).hour(i).format("A")}
+                    <div className="card w-70 gridDay" onClick={this.handleBooking}>
+                        {`${moment().hour(i).format("hh")} ${moment().hour(i).format("A")}`}
                     </div>
                 );
             }
@@ -28,12 +31,12 @@ class Content extends Component {
                 <div className="col-sm" key={day}>
                     <div className="border-right">
                         {day.format('ddd').toString()}
-                        <br/>
+                        <br />
                         {day.format('D-M-Y').toString()}
                     </div>
                     {weekDay}
                 </div>
-                
+
             );
             day = day.clone().add(1, 'd');
         }
@@ -43,11 +46,10 @@ class Content extends Component {
     }
 
     render() {
-        console.log(this.createCalendar());
         return (
             <div className="container">
                 <div className="row">
-                    {this.createCalendar()}
+                    {this.handleCalendar()}
                 </div>
 
             </div >
